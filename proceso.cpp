@@ -1,4 +1,6 @@
 #include "proceso.h"
+using namespace std;
+
 
 Proceso::Proceso(int id, int tiempoLlegada, int tiempoRafaga, int prioridad)
     : id(id), tiempoLlegada(tiempoLlegada), tiempoRafaga(tiempoRafaga),
@@ -13,20 +15,17 @@ int Proceso::getTiempoRestante() const {return tiempoRestante;}
 int Proceso::getQuantumTotal() const {return quantumTotal;}
 bool Proceso::isPenalizado() const {return penalizado;}
 void Proceso::setTiempoRestante(int tiempoRestante) {this->tiempoRestante = tiempoRestante;}
-void Proceso::setQuantumTotal(){quantumTotal++;}
+void Proceso::setQuantumTotal(int quantum){quantumTotal = quantum;}
 void Proceso::penalizar() {penalizado = true;}
 void Proceso::actualizar(int tiempoActual) {
-    if (tiempoRestante > 0) {
-        tiempoRestante--;
-        tiempoActual++;
-        if (tiempoRestante == 0) {
-            tiempoFin = tiempoActual;
-            cout << "Waiting time proceso" << id << " = "  << tiempoFin - tiempoRafaga - tiempoLlegada;
-            cout << "TAT proceso" << id << " = "  << tiempoFin - tiempoLlegada;
-        }
+    if (tiempoRestante == 0) {
+        tiempoFin = tiempoActual;
+        cout << "Waiting time proceso " << id << " = "  << tiempoFin - tiempoRafaga - tiempoLlegada<< endl;
+        cout << "TAT proceso " << id << " = "  << tiempoFin - tiempoLlegada << endl;;
     }
 }
+
 bool Proceso::operator<(const Proceso& otro) const {
     // El proceso con mayor prioridad (valor más alto) se considera menor para que vaya primero
-    return this->prioridad > otro.prioridad;
+    return this->tiempoLlegada < otro.tiempoLlegada;
 }

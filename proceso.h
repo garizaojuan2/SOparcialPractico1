@@ -1,5 +1,8 @@
 #ifndef PROCESO_H
 #define PROCESO_H
+#include <iostream>
+
+using namespace std;
 
 class Proceso{
 private:
@@ -26,7 +29,7 @@ public:
     int getQuantumTotal() const;
     bool isPenalizado() const;
     void setTiempoRestante(int tiempoRestante);
-    void setQuantumTotal();
+    void setQuantumTotal(int quantum);
     void penalizar();
     void actualizar(int tiempoActual);
     bool operator<(const Proceso& otro) const;
