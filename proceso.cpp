@@ -20,7 +20,7 @@ void Proceso::penalizar() {penalizado = true;}
 void Proceso::actualizar(int tiempoActual) {
     if (tiempoRestante == 0) {
         tiempoFin = tiempoActual;
-        cout << "Waiting time proceso " << id << " = "  << tiempoFin - tiempoRafaga - tiempoLlegada<< endl;
+        cout << "Waiting time proceso " << id  << " = " << tiempoFin << " - "<< tiempoRafaga << " - "<< tiempoLlegada << " = "<< tiempoFin - tiempoRafaga - tiempoLlegada<< endl;
         cout << "TAT proceso " << id << " = "  << tiempoFin - tiempoLlegada << endl;;
     }
 }

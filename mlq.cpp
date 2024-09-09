@@ -73,14 +73,13 @@ int MLQ::FCFS(int itCola, vector<Proceso> &procesos, int tiempoActual){
         colas[itCola].eliminarProcesos();
     }
     return ans;
-}
+}   
 void MLQ::ejecutarTodas(vector<Proceso> &procesos, int tiempoTotal){
     int tiempoActual = 0;
     bool flag1 = true;
     while(tiempoActual <= tiempoTotal){
         bool flag2 = true;
         int i = 0;
-        sort(procesos.begin(),procesos.end());
         this->agregarProcesosCola(tiempoActual, procesos);
         flag1 = this->comprobarEmpty(procesos);        
         vector<Proceso> tmp;

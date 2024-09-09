@@ -54,7 +54,6 @@ int main() {
         }
         tmp.push_back(nuevoProceso);
     }
-    sort(tmp.begin(),tmp.end());
     mlq1.agregarCola(cola1);
     mlq1.agregarCola(cola2);    
     mlq1.agregarCola(cola3);
