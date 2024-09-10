@@ -1,16 +1,15 @@
-#ifndef ROUND_ROBIN_H
-#define ROUND_ROBIN_H
+#ifndef ROUND_ROBIN2_H
+#define ROUND_ROBIN2_H
 
 #include "politica_planificacion.h"
 using namespace std;
 
-class RoundRobin : public PoliticaPlanificacion{
+class RoundRobin2 : public PoliticaPlanificacion{
 private:
     int quantum;
 
 public:
-    RoundRobin(int quantum);
-    int getQuantum();
+    RoundRobin2(int quantum);
     void ejecutar(vector<Proceso>& procesos, int tiempoActual) override;
     bool detectarPenalizacion(const Proceso& proceso) override;
 };

@@ -15,8 +15,11 @@ void Cola::eliminarProcesos(){
     for(int i = 0; i < procesos.size(); i++){
         if(procesos[i].getTiempoRestante() == 0)
             procesos.erase(procesos.begin() + i);
+        else if(procesos[i].isPenalizado())
+            procesos.erase(procesos.begin() + i);
     }
 }
+void Cola::borrarProceso(int it){procesos.erase(procesos.begin() + it);}
 int Cola::getQuantum(){return quantum;}
 
 string Cola::getString(){return policy;}

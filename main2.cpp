@@ -2,32 +2,30 @@
 #include <vector>
 #include "proceso.h"
 #include "cola.h"
-#include "mlq.h"
-#include "round_robin.h"
+#include "mlfq.h"
+#include "round_robin2.h"
 #include "fcfs.h"
 
 using namespace std;
 
 // Función para leer los datos de un proceso desde la consola
 Proceso leerDatosProceso(int id) {
-    int tiempoLlegada, tiempoRafaga, prioridad;
+    int tiempoLlegada, tiempoRafaga;
     cout << "Ingrese el tiempo de llegada del proceso: ";
     cin >> tiempoLlegada;
     cout << "Ingrese el tiempo de rafaga (burst time) del proceso: ";
     cin >> tiempoRafaga;
-    cout << "Ingrese la prioridad del proceso (mayor numero = mayor prioridad): ";
-    cin >> prioridad;
-    Proceso proceso(id, tiempoLlegada, tiempoRafaga, prioridad);
+    Proceso proceso(id, tiempoLlegada, tiempoRafaga, 0); // Prioridad eliminada, se establece como 0
     return proceso;
 }
 
 int main() {
     int tiempoActual = 0;
 
-    // Instancias de MLQ y políticas de planificación
-    MLQ mlq1; // Instancia correcta de MLQ
-    RoundRobin rr1(3);  // Round Robin con quantum de 3
-    RoundRobin rr2(2);  // Round Robin con quantum de 2
+    // Instancias de MLFQ y políticas de planificación
+    MLFQ mlfq1; // Instancia de MLFQ
+    RoundRobin2 rr1(3);  // Round Robin con quantum de 3
+    RoundRobin2 rr2(2);  // Round Robin con quantum de 2
     FCFS fcfs1;         // FCFS
 
     // Colas asociadas con las diferentes políticas
@@ -44,21 +42,16 @@ int main() {
         cout << "Ingrese los datos del proceso " << (i + 1) << ":" << endl;
         Proceso nuevoProceso = leerDatosProceso(i + 1);
         tiempoTotal += nuevoProceso.getTiempoRafaga();
-
-
-        if (nuevoProceso.getPrioridad() >= 3){
-            nuevoProceso.setQuantumTotal(0);
-        }
-        else if (nuevoProceso.getPrioridad() == 2){
-            nuevoProceso.setQuantumTotal(0);
-        }
         tmp.push_back(nuevoProceso);
     }
-    mlq1.agregarCola(cola1);
-    mlq1.agregarCola(cola2);    
-    mlq1.agregarCola(cola3);
-    mlq1.ejecutarTodas(tmp, tiempoTotal);
+    
+    // Agregar las colas al sistema MLFQ
+    mlfq1.agregarCola(cola1);
+    mlfq1.agregarCola(cola2);    
+    mlfq1.agregarCola(cola3);
 
+    // Ejecutar todos los procesos
+    mlfq1.ejecutarTodas(tmp, tiempoTotal);
 
     return 0;
 }

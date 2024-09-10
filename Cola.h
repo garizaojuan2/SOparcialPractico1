@@ -20,6 +20,7 @@ public:
     void agregarProceso(const Proceso& proceso);
     void ejecutar(int tiempoActual);
     void eliminarProcesos();
+    void borrarProceso(int it);
     int getQuantum();
     string getString();
     vector<Proceso>& getProcesos();

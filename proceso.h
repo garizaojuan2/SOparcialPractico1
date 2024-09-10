@@ -13,7 +13,8 @@ private:
     int tiempoRestante;    
     int tiempoInicio;      
     int tiempoFin;
-    int quantumTotal;         
+    int quantumTotal;
+    int colaAso;         
     bool penalizado;       
 
 public:
@@ -27,10 +28,13 @@ public:
     int getPrioridad() const;
     int getTiempoRestante() const;
     int getQuantumTotal() const;
+    int getColaAso() const; 
     bool isPenalizado() const;
     void setTiempoRestante(int tiempoRestante);
     void setQuantumTotal(int quantum);
+    void setColaAso(int colaAso);
     void penalizar();
+    void despenalizar();
     void actualizar(int tiempoActual);
     bool operator<(const Proceso& otro) const;
 };
