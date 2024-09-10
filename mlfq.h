@@ -1,15 +1,15 @@
-#ifndef MLQ_H
-#define MLQ_H
+#ifndef MLFQ_H
+#define MLFQ_H
 
 #include <vector>
 #include "cola.h"
 using namespace std;
-class MLQ{
+class MLFQ{
 protected:
     vector<Cola> colas;
 
 public:
-    MLQ();
+    MLFQ();
     void agregarCola(Cola& cola);
     void ejecutarTodas(vector<Proceso> &procesos, int tiempoTotal);
     void agregarProcesosCola(int tiempoActual, vector<Proceso> &procesos);

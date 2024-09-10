@@ -15,7 +15,7 @@ Proceso leerDatosProceso(int id) {
     cin >> tiempoLlegada;
     cout << "Ingrese el tiempo de rafaga (burst time) del proceso: ";
     cin >> tiempoRafaga;
-    Proceso proceso(id, tiempoLlegada, tiempoRafaga, 0); // Prioridad eliminada, se establece como 0
+    Proceso proceso(id, tiempoLlegada, tiempoRafaga, -1); // Prioridad eliminada, se establece como 0
     return proceso;
 }
 

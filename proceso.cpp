@@ -18,6 +18,7 @@ bool Proceso::isPenalizado() const {return penalizado;}
 void Proceso::setTiempoRestante(int tiempoRestante) {this->tiempoRestante = tiempoRestante;}
 void Proceso::setQuantumTotal(int quantum){quantumTotal = quantum;}
 void Proceso::setColaAso(int colaAso){this->colaAso = colaAso;}
+void Proceso::subPrioridad(){prioridad = prioridad - 1;}
 void Proceso::penalizar() {penalizado = true;}
 void Proceso::despenalizar(){penalizado = false;}
 void Proceso::actualizar(int tiempoActual){

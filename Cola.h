@@ -22,6 +22,7 @@ public:
     void eliminarProcesos();
     void borrarProceso(int it);
     int getQuantum();
+    void penalizar();
     string getString();
     vector<Proceso>& getProcesos();
 };
